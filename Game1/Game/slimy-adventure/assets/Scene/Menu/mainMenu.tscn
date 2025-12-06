@@ -1,0 +1,385 @@
+[gd_scene load_steps=6 format=3 uid="uid://do2b6k48in03f"]
+
+[ext_resource type="Script" uid="uid://t5w5v8r0kmb4" path="res://assets/Scripts/mainMenuScript.gd" id="1_8em8f"]
+[ext_resource type="AudioStream" uid="uid://r3p7q8h53byw" path="res://assets/Audio/music/Good Kid - Nomu 8-bit [WI1Fjh7P2Fw].mp3" id="2_nw45m"]
+[ext_resource type="Script" uid="uid://n3ecdy2i8rom" path="res://assets/Scene/Menu/volume_slider(music).gd" id="3_nw45m"]
+[ext_resource type="Script" uid="uid://c55xppif5vj8x" path="res://assets/Scene/Menu/full_screen_toggle.gd" id="4_b1joo"]
+
+[sub_resource type="GDScript" id="GDScript_b1joo"]
+script/source = "extends Panel
+
+@onready var overview_panel: Panel = $\".\"
+@onready var controls_panel: Panel = $\"../../Controls/ControlsPanel\"
+@onready var hostiles_panel: Panel = $\"../../Hostiles/HostilesPanel\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	overview_panel.visible = false
+	controls_panel.visible = false
+	hostiles_panel.visible = false
+
+
+
+func _on_overview_pressed() -> void:
+	if overview_panel.visible == false:
+		overview_panel.visible = true
+	else:
+		overview_panel.visible = false
+
+
+func _on_controls_pressed() -> void:
+	if controls_panel.visible == false:
+		controls_panel.visible = true
+	else:
+		controls_panel.visible = false
+
+
+func _on_hostiles_pressed() -> void:
+	if hostiles_panel.visible == false:
+		hostiles_panel.visible = true
+	else:
+		hostiles_panel.visible = false
+"
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8em8f")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 69.0
+offset_right = 908.0
+offset_bottom = 165.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 35
+theme_override_font_sizes/font_size = 70
+text = "SLIMY ADVENTURE"
+
+[node name="ButtonManager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 441.0
+offset_right = 1134.0
+offset_bottom = 526.0
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="Settings" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 600.0
+offset_right = 90.0
+offset_bottom = 644.0
+text = "Settings"
+
+[node name="Exit" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 951.0
+offset_top = 544.0
+offset_right = 1131.0
+offset_bottom = 631.0
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="Tutorial" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 600.0
+offset_right = 178.0
+offset_bottom = 644.0
+text = "Tutorial"
+
+[node name="Options" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 349.0
+offset_right = 445.0
+offset_bottom = 596.0
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 436.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider(Music)" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 41.0
+offset_right = 394.0
+offset_bottom = 97.0
+min_value = -60.0
+max_value = 0.0
+script = ExtResource("3_nw45m")
+audio_bus_name = "Music"
+
+[node name="VolumeLabel" type="Label" parent="Options/VolumeSlider(Music)"]
+layout_mode = 0
+offset_left = -124.0
+offset_top = 8.0
+offset_right = -14.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 20
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolumeSlider(SFX)2" type="HSlider" parent="Options"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 98.0
+offset_right = 388.0
+offset_bottom = 154.0
+min_value = -60.0
+max_value = 0.0
+script = ExtResource("3_nw45m")
+audio_bus_name = "Music"
+
+[node name="VolumeLabel" type="Label" parent="Options/VolumeSlider(SFX)2"]
+layout_mode = 0
+offset_left = -124.0
+offset_top = 8.0
+offset_right = -14.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FullScreenToggle" type="CheckBox" parent="Options"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 192.0
+offset_right = 286.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 20
+button_pressed = true
+text = "Full Screen"
+script = ExtResource("4_b1joo")
+
+[node name="Credits" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 192.0
+offset_right = 129.0
+offset_bottom = 233.0
+text = "Credits"
+
+[node name="CreditsPanel" type="Panel" parent="Options/Credits"]
+layout_mode = 0
+offset_left = 441.0
+offset_top = -151.0
+offset_right = 876.0
+offset_bottom = 59.0
+
+[node name="Label" type="Label" parent="Options/Credits/CreditsPanel"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 15.0
+offset_right = 190.0
+offset_bottom = 194.0
+text = "Rayver S. Hamsirani
+
+
+Khayr T. Majid
+
+
+Benedict S. Apolonio"
+
+[node name="Label2" type="Label" parent="Options/Credits/CreditsPanel/Label"]
+layout_mode = 0
+offset_left = 193.0
+offset_right = 363.0
+offset_bottom = 179.0
+text = "-Game Developer
+-Game Level Designer
+
+-Lead Terrain Artist
+
+
+-Lead Character Artist"
+
+[node name="Tutorial" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 172.0
+offset_right = 212.0
+offset_bottom = 581.0
+
+[node name="Overview" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 55.0
+offset_right = 165.0
+offset_bottom = 86.0
+text = "Game Overview"
+
+[node name="OverviewPanel" type="Panel" parent="Tutorial/Overview"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = -57.0
+offset_right = 639.0
+offset_bottom = 352.0
+script = SubResource("GDScript_b1joo")
+
+[node name="Label" type="Label" parent="Tutorial/Overview/OverviewPanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 459.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 30
+text = "Game Overview"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="next" type="Button" parent="Tutorial/Overview/OverviewPanel"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 374.0
+offset_right = 455.0
+offset_bottom = 405.0
+text = "next
+"
+
+[node name="previous" type="Button" parent="Tutorial/Overview/OverviewPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 372.0
+offset_right = 88.0
+offset_bottom = 403.0
+text = "previous
+"
+
+[node name="Controls" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 89.0
+offset_right = 165.0
+offset_bottom = 120.0
+text = "Controls
+"
+
+[node name="ControlsPanel" type="Panel" parent="Tutorial/Controls"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = -91.0
+offset_right = 639.0
+offset_bottom = 318.0
+script = SubResource("GDScript_b1joo")
+
+[node name="Label" type="Label" parent="Tutorial/Controls/ControlsPanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 459.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 30
+text = "Controls
+
+[A] - Left
+[D] - Right
+[Space] - Jump"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hostiles" type="Button" parent="Tutorial"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 123.0
+offset_right = 165.0
+offset_bottom = 154.0
+text = "Hostiles
+"
+
+[node name="HostilesPanel" type="Panel" parent="Tutorial/Hostiles"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = -125.0
+offset_right = 639.0
+offset_bottom = 284.0
+script = SubResource("GDScript_b1joo")
+
+[node name="Label" type="Label" parent="Tutorial/Hostiles/HostilesPanel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 459.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 30
+text = "Hostile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hostile Details" type="Label" parent="Tutorial/Hostiles/HostilesPanel"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 57.0
+offset_right = 434.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 30
+text = "Strikers"
+vertical_alignment = 1
+
+[node name="next" type="Button" parent="Tutorial/Hostiles/HostilesPanel"]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 374.0
+offset_right = 455.0
+offset_bottom = 405.0
+text = "next
+"
+
+[node name="previous" type="Button" parent="Tutorial/Hostiles/HostilesPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 372.0
+offset_right = 88.0
+offset_bottom = 403.0
+text = "previous
+"
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 200.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 30
+text = "Tutorial"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Background Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_nw45m")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ButtonManager/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ButtonManager/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="value_changed" from="Options/VolumeSlider(Music)" to="Options/VolumeSlider(Music)" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/VolumeSlider(SFX)2" to="Options/VolumeSlider(SFX)2" method="_on_value_changed"]
+[connection signal="toggled" from="Options/FullScreenToggle" to="Options/FullScreenToggle" method="_on_toggled"]
+[connection signal="pressed" from="Options/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Tutorial/Overview" to="." method="_on_overview_pressed"]
+[connection signal="pressed" from="Tutorial/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Tutorial/Hostiles" to="." method="_on_hostiles_pressed"]

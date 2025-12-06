@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://r3p7q8h53byw"
+path="res://.godot/imported/Good Kid - Nomu 8-bit [WI1Fjh7P2Fw].mp3-ce875b57b2749a06d5c31da6181c74fc.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/music/Good Kid - Nomu 8-bit [WI1Fjh7P2Fw].mp3"
+dest_files=["res://.godot/imported/Good Kid - Nomu 8-bit [WI1Fjh7P2Fw].mp3-ce875b57b2749a06d5c31da6181c74fc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
