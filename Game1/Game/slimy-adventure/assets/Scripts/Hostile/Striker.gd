@@ -8,7 +8,7 @@ var detection_blocks = 7
 var tile_size = 32
 var detection_distance = detection_blocks * tile_size
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var distance_to_player = position.distance_to(slime.position)
 
 	if distance_to_player <= detection_distance:
@@ -21,6 +21,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_collision_with_player(body):
-	if body.name == "slime":  # Ensure the collision is with the player
+	if body.name == "Slime":  # Ensure the collision is with the player
 		print("Slime collided with the player!")
 		queue_free()  # Delete the slime from the scene

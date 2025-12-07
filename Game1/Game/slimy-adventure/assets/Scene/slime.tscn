@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfbemxv77xg4e"]
+[gd_scene load_steps=15 format=3 uid="uid://dfbemxv77xg4e"]
 
 [ext_resource type="Texture2D" uid="uid://cgqeqrv8bwmia" path="res://assets/Character/FullIdleAnimationSlimeProj.png" id="1_2d52u"]
 [ext_resource type="Script" uid="uid://b1rilaroxs5ga" path="res://assets/Scripts/Player.gd" id="1_5jc4t"]
@@ -77,6 +77,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2d52u"]
 radius = 15.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w27ao"]
+
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_5jc4t")
 
@@ -88,3 +90,11 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_2d52u")
+
+[node name="Damage Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Area"]
+position = Vector2(32, -13)
+shape = SubResource("RectangleShape2D_w27ao")
+
+[connection signal="area_entered" from="Damage Area" to="." method="_on_damage_area_area_entered"]

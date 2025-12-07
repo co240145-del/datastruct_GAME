@@ -34,3 +34,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+
+#area damage
+func _on_damage_area_area_entered(area: Area2D):
+	if area.is_in_group("hitbox"):
+		area.damage()
