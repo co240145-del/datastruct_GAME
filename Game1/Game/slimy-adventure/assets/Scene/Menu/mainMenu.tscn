@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://do2b6k48in03f"]
 
-[ext_resource type="Script" uid="uid://t5w5v8r0kmb4" path="res://assets/Scripts/mainMenuScript.gd" id="1_8em8f"]
+[ext_resource type="Script" uid="uid://t5w5v8r0kmb4" path="res://assets/Scene/Intro/mainMenuScript.gd" id="1_8em8f"]
 [ext_resource type="AudioStream" uid="uid://r3p7q8h53byw" path="res://assets/Audio/music/Good Kid - Nomu 8-bit [WI1Fjh7P2Fw].mp3" id="2_nw45m"]
 [ext_resource type="Script" uid="uid://n3ecdy2i8rom" path="res://assets/Scene/Menu/volume_slider(music).gd" id="3_nw45m"]
 [ext_resource type="Script" uid="uid://c55xppif5vj8x" path="res://assets/Scene/Menu/full_screen_toggle.gd" id="4_b1joo"]
